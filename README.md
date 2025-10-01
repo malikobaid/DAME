@@ -65,15 +65,15 @@ README.md
 
 ## Prerequisites
 
-- **Google Cloud project** (e.g., `dame-prod-473718`) with:
-  - BigQuery enabled (location: `europe-west2`),
-  - GCS bucket (e.g., `gs://dame-epc-london` in `europe-west2`).
+- **Google Cloud project** (e.g., `<your-gcp-project-id>`) with:
+  - BigQuery enabled (location: `<your-gcp-region>`),
+  - GCS bucket (e.g., `<your-gcs-bucket>` in `<your-gcp-region>`).
 - **EPC API credentials** from Open Data Communities: email + API key.
 - **gcloud** CLI (logged in) and **Application Default Credentials (ADC)** configured.
 
 ```bash
 gcloud auth login
-gcloud config set project <PROJECT_ID>
+gcloud config set project <your-gcp-project-id>
 gcloud auth application-default login
 ```
 
@@ -102,32 +102,30 @@ gcloud auth application-default login
 ### `.env` example
 
 ```dotenv
-# GCP
-PROJECT_ID=dame-prod-473718
-REGION=europe-west2
-BUCKET=dame-epc-london
+# GCP Configuration
+PROJECT_ID=<your-gcp-project-id>
+REGION=<your-gcp-region>
+BUCKET=<your-gcs-bucket>
 
-# BigQuery datasets
-DATASET_RAW=dame_epc
-DATASET_ENR=dame_epc
+# BigQuery Configuration
+BQ_DATASET=<your-bq-dataset>
 
-# EPC API
-EPC_EMAIL=you@example.com
-EPC_API_KEY=xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+# EPC API Credentials (REQUIRED)
+EPC_EMAIL=your-email@example.com
+EPC_API_KEY=your-epc-api-key-here
 
-# Ingestion window
-START_MONTH=2024-01
-END_MONTH=2024-01
-
-# Networking / pagination
+# Data Processing Configuration
+START_YEAR=2010
+END_YEAR=2025
 PAGE_SIZE=5000
+FORMAT=csv
+RUN_MODE=incremental
+MAX_CONCURRENCY=2
+
+# Request Configuration
 REQUEST_TIMEOUT_SECONDS=60
 RETRY_MAX=5
 RETRY_BACKOFF=2.0
-
-# Logging
-LOG_LEVEL=INFO
-ENABLE_GCLOUD_LOGGING=false
 ```
 
 > Raw and enriched datasets can be the same (`dame_epc`). Views are created in `DATASET_ENR`.
