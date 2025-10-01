@@ -1,0 +1,115 @@
+# ------------------------------------------------------------
+# DAME — .gitignore
+# Python / BigQuery / Notebooks / Terraform / VSCode / macOS
+# ------------------------------------------------------------
+
+# OS / Editor artifacts
+.DS_Store
+Thumbs.db
+.AppleDouble
+.LSOverride
+*.code-workspace
+.vscode/
+.idea/
+.ai/
+.archived/
+
+# Python bytecode / build
+__pycache__/
+*.py[cod]
+*$py.class
+*.pyd
+*.so
+build/
+dist/
+*.egg-info/
+.eggs/
+.wheels/
+pip-wheel-metadata/
+__pypackages__/
+
+# Virtual environments / pyenv
+.venv/
+.venv*/
+venv/
+venv*/
+env/
+ENV/
+.python-version
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Caches / tooling
+.cache/
+.pytest_cache/
+.mypy_cache/
+.pytype/
+.ruff_cache/
+.coverage
+.coverage.*
+htmlcov/
+cov.xml
+coverage.xml
+*.log
+logs/
+*.pid
+
+# Environment files (keep examples)
+.env
+.env.*
+!.env.example
+!.env.sample
+
+# Terraform (infra/)
+.terraform/
+**/.terraform/*
+terraform.tfstate
+terraform.tfstate.*
+crash.log
+*.tfvars
+*.tfvars.json
+override.tf
+override.tf.json
+*_override.tf
+*_override.tf.json
+
+# Node (if any UI)
+node_modules/
+npm-debug.log*
+yarn-error.log
+.pnpm-store/
+
+# Secrets / credentials (avoid committing keys)
+# Adjust to your repo layout if you intentionally track JSON configs.
+*service*account*.json
+*credentials*.json
+secrets/
+secret/
+**/keys/
+**/*.key
+**/*.pem
+
+# Temp / data dumps (local only)
+tmp/
+temp/
+*.tmp
+*.swp
+*.swo
+data/
+ndjson/
+
+# Docker (local artifacts)
+*.tar
+*.img
+docker-compose.override.yml
+
+# BigQuery export artifacts (avoid accidental check‑ins)
+*.avro
+*.parquet
+*.orc
+*.gz
+*.jsonl
+
+# Keep SQL view definitions and repo SQL
+!cloud/**/sql/**/*.sql
